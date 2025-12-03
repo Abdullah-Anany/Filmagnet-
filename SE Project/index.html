@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmagnet</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Google Fonts: Antonio + Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: #0b0b0c;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, .navbar-brand {
+            font-family: 'Antonio', sans-serif !important;
+            letter-spacing: 1px;
+        }
+
+        .navbar {
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(3px);
+            color: #fff;
+        }
+
+        /* Navbar link hover animation */
+        .nav-link {
+            position: relative;
+            color: #fff !important;
+            transition: color 0.3s ease;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            background-color: #E50914;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #E50914 !important;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .btn-signin {
+            border: 1px solid #E50914;
+            color: #E50914;
+        }
+
+        .btn-green {
+            background: #E50914;
+            color: #000;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-green:hover {
+            background: #fff; /* or slightly lighter red if you prefer */
+            color: #E50914;
+            transform: scale(1.05);
+        }
+
+        /* HERO BACKGROUND */
+        .hero-section {
+            height: 70vh;
+            background: url('Oppenheimer.jpeg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(1,1,1,0.9), rgba(1,1,1,0.4));
+        }
+
+        .hero-content {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            padding-left: 5%;
+            max-width: 500px;
+        }
+
+        .movie-card img {
+            border-radius: 8px;
+        }
+
+        .category-btn {
+            border-radius: 30px;
+            padding: 6px 20px;
+        }
+        
+        .watch-btn {
+            background: #E50914;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .section-title {
+            color: #E50914;
+            font-weight: 600;
+        }
+
+        /* MOVIE CARD HOVER ANIMATION */
+        .movie-card {
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform 0.35s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .movie-card img {
+            transition: transform 0.35s ease, filter 0.35s ease;
+        }
+
+        .movie-card-title {
+            transition: transform 0.35s ease, font-size 0.35s ease, opacity 0.35s ease;
+            display: block;
+        }
+
+        /* Hover effects */
+        .movie-card:hover {
+            transform: scale(1.07);
+        }
+
+        .movie-card:hover img {
+            transform: scale(1.12);
+            filter: brightness(70%);
+        }
+
+        /* Text movement + size change on hover */
+        .movie-card:hover + .movie-card-title {
+            transform: translateY(5px);
+            font-size: 1.05em;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg px-4 py-3">
+    <a class="navbar-brand fs-4" href="#">Filmagnet</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link mx-2" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link mx-2" href="#">Movie</a></li>
+            <li class="nav-item"><a class="nav-link mx-2" href="#">TV Shows</a></li>
+            <li class="nav-item"><a class="nav-link mx-2" href="#">Web Series</a></li>
+            <li class="nav-item"><a class="nav-link mx-2" href="#">Premium</a></li>
+        </ul>
+        <button class="btn btn-signin ms-3">Sign In</button>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero-section d-flex align-items-center">
+    <div class="hero-overlay"></div>
+
+    <div class="container position-relative">
+        <div class="row align-items-center">
+
+            <!-- LEFT SIDE (Existing Text) -->
+            <div class="col-md-6">
+                <div class="hero-content">
+                    <h1 class="fw-bold">
+                        Unlimited <span style="color:#E50914;">Entertainment</span>,  
+                        <br>Movies, TV shows & More.
+                    </h1>
+
+                    <button class="watch-btn btn-green">PLAY NOW</button>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE (NEW OPPENHEIMER DESCRIPTION) -->
+            <div class="col-md-6 text-end pe-4">
+                <h1 style="font-family: 'Antonio', sans-serif; 
+                           font-size: 3.2rem; 
+                           color: #E50914; 
+                           letter-spacing: 2px;">
+                    OPPENHEIMER
+                </h1>
+
+                <p style="font-family: 'Inter', sans-serif; 
+                          font-size: 1rem; 
+                          color: #ddd; 
+                          max-width: 420px; 
+                          margin-left: auto;">
+                    A gripping biographical thriller that explores the life of J. Robert Oppenheimer,
+                    the theoretical physicist whose groundbreaking work led to the creation of the 
+                    atomic bomb—forever changing the course of history. Torn between genius 
+                    and responsibility, he faces the moral consequences of his own invention.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- UPCOMING MOVIES SECTION -->
+<section class="container py-5">
+    <h5 class="section-title mb-3">ONLINE STREAMING</h5>
+    <h2 class="fw-bold mb-4"></h2>
+
+    <!-- Category Buttons -->
+    <div class="mb-4">
+        <button class="btn btn-outline-light category-btn me-2">Movies</button>
+        <button class="btn btn-outline-light category-btn me-2">TV Shows</button>
+        <button class="btn btn-outline-light category-btn">Animations</button>
+    </div>
+
+   <div class="row g-4">
+
+    <!-- FIRST 4 (existing) -->
+    <div class="row g-4">
+
+    <div class="col-6 col-md-3">
+        <a href="movie.html?title=Stranger%20Things%20S5&img=Stranger%20things.jpg&summary=A%20new%20threat%20emerges%20as%20the%20Hawkins%20gang%20faces%20its%20darkest%20mystery%20yet." style="text-decoration:none; color:white;">
+            <div class="movie-card">
+                <img src="Stranger things.jpg" class="img-fluid">
+            </div>
+            <p class="mt-2 movie-card-title">Stranger Things S5 (2025)</p>
+        </a>
+    </div>
+
+    <div class="col-6 col-md-3">
+        <a href="movie.html?title=No%20Time%20To%20Die&img=No%20time%20to%20die.jpg&summary=James%20Bond%20returns%20from%20retirement%20to%20face%20a%20dangerous%20new%20biochemical%20threat." style="text-decoration:none; color:white;">
+            <div class="movie-card">
+                <img src="No time to die.jpg" class="img-fluid">
+            </div>
+            <p class="mt-2 movie-card-title">No Time to Die (2021)</p>
+        </a>
+    </div>
+
+    <div class="col-6 col-md-3">
+        <a href="movie.html?title=Arcane%20S2&img=Arcane.png&summary=Jinx%20and%20Vi%20confront%20their%20past%20as%20Piltover%20and%20Zaun%20spiral%20into%20chaos." style="text-decoration:none; color:white;">
+            <div class="movie-card">
+                <img src="Arcane.png" class="img-fluid">
+            </div>
+            <p class="mt-2 movie-card-title">Arcane S2 (2024)</p>
+        </a>
+    </div>
+
+    <div class="col-6 col-md-3">
+        <a href="movie.html?title=Whiplash&img=Whiplash.jpg&summary=A%20young%20drummer%20pushes%20his%20limits%20under%20the%20relentless%20pressure%20of%20a%20ruthless%20instructor." style="text-decoration:none; color:white;">
+            <div class="movie-card">
+                <img src="Whiplash.jpg" class="img-fluid">
+            </div>
+            <p class="mt-2 movie-card-title">Whiplash (2014)</p>
+        </a>
+    </div>
+
+    <!-- NEW 4 -->
+
+    <div class="col-6 col-md-3">
+        <a href="movie.html?title=Dune%20Part%20Two&img=Dune2.jpg&summary=Paul%20Atreides%20unites%20with%20the%20Fremen%20to%20fulfill%20his%20destiny%20and%20fight%20for%20Arrakis." style="text-decoration:none; color:white;">
+            <div class="movie-card">
+                <img src="Dune2.jpg" class="img-fluid">
+            </div>
+            <p class="mt-2 movie-card-title">Dune: Part Two (2024)</p>
+        </a>
+    </div>
+
+    <div class="col-6 col-md-3">
+        <a href="movie.html?title=The%20Batman&img=Batman2022.jpg&summary=Batman%20uncovers%20a%20web%20of%20corruption%20in%20Gotham%20as%20he%20faces%20the%20Riddler." style="text-decoration:none; color:white;">
+            <div class="movie-card">
+                <img src="Batman2022.jpg" class="img-fluid">
+            </div>
+            <p class="mt-2 movie-card-title">The Batman (2022)</p>
+        </a>
+    </div>
+
+    <div class="col-6 col-md-3">
+        <a href="movie.html?title=Interstellar&img=Interstellar.jpg&summary=A%20team%20of%20explorers%20travels%20through%20a%20wormhole%20in%20search%20of%20a%20new%20home%20for%20humanity." style="text-decoration:none; color:white;">
+            <div class="movie-card">
+                <img src="Interstellar.jpg" class="img-fluid">
+            </div>
+            <p class="mt-2 movie-card-title">Interstellar (2014)</p>
+        </a>
+    </div>
+
+    <div class="col-6 col-md-3">
+        <a href="movie.html?title=Inception&img=Inception.jpg&summary=A%20skilled%20thief%20enters%20dreams%20to%20steal%20secrets%20but%20faces%20an%20impossible%20mission%20of%20planting%20an%20idea." style="text-decoration:none; color:white;">
+            <div class="movie-card">
+                <img src="Inception.jpg" class="img-fluid">
+            </div>
+            <p class="mt-2 movie-card-title">Inception (2010)</p>
+        </a>
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
