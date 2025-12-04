@@ -132,8 +132,6 @@
       <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link mx-2" href="index.html#top">Home</a></li>
           <li class="nav-item"><a class="nav-link mx-2" href="index.html#movies-section">Movies</a></li>
-          <li class="nav-item"><a class="nav-link mx-2" href="#">TV Shows</a></li>
-          <li class="nav-item"><a class="nav-link mx-2" href="#">Web Series</a></li>
       </ul>
       <button class="btn btn-signin ms-3">Sign In</button>
   </div>
@@ -153,48 +151,68 @@
     // Read URL parameters
     const params = new URLSearchParams(window.location.search);
     const title = params.get("title");
-    const img = params.get("img");
-    const summary = params.get("summary");
 
-    document.getElementById("title").textContent = title;
-    document.getElementById("poster").src = img;
-    document.getElementById("summary").textContent = summary;
-
-    // Set the streaming link depending on the movie
-    const watchBtn = document.getElementById("watchBtn");
-    let url = "#"; // default
-
-    switch(title) {
-        case "Stranger Things S5":
-            url = "https://kisskh.do/Drama/Stranger-Things---Season-5?id=11699&q=true";
-            break;
-        case "No Time To Die":
-            url = "https://ww7.123moviesfree.net/movie/no-time-to-die-1630851790/";
-            break;
-        case "Arcane S2":
-            url = "https://kisskh.do/Drama/Arcane-Season-2--Dub-?id=9832&q=true";
-            break;
-        case "Whiplash":
-            url = "https://ww7.123moviesfree.net/movie/whiplash-2294/";
-            break;
-        case "Dune Part Two":
-            url = "https://kisskh.do/Drama/Dune--Part-Two?id=8757&q=true";
-            break;
-        case "The Batman":
-            url = "https://kisskh.do/Drama/The-Batman?id=6655&q=true";
-            break;
-        case "Interstellar":
-            url = "https://kisskh.do/Drama/Interstellar?id=4226&q=true";
-            break;
-        case "Inception":
-            url = "https://ww7.123moviesfree.net/movie/inception-2756/";
-            break;
-    }
-
-    // Make button a clickable link
-    watchBtn.onclick = () => {
-        window.open(url, "_blank");
+    // Movie/TV mapping
+    const mediaData = {
+        "Stranger Things S5": {
+            img: "Stranger things.jpg",
+            summary: "The thrilling fifth season of Stranger Things continues the supernatural adventures in Hawkins as secrets unravel and new threats emerge.",
+            url: "https://kisskh.do/Drama/Stranger-Things---Season-5?id=11699&q=true"
+        },
+        "No Time To Die": {
+            img: "No time to die.jpg",
+            summary: "James Bond comes out of retirement to face a mysterious villain armed with dangerous new technology.",
+            url: "https://ww7.123moviesfree.net/movie/no-time-to-die-1630851790/"
+        },
+        "Arcane S2": {
+            img: "Arcane.png",
+            summary: "The second season of Arcane dives deeper into the tension between Piltover and Zaun, exploring the origins of its iconic characters.",
+            url: "https://kisskh.do/Drama/Arcane-Season-2--Dub-?id=9832&q=true"
+        },
+        "Whiplash": {
+            img: "Whiplash.jpg",
+            summary: "A young drummer enrolls at a music conservatory where he encounters an abusive instructor pushing him to the limits of his talent and sanity.",
+            url: "https://ww7.123moviesfree.net/movie/whiplash-2294/"
+        },
+        "Dune Part Two": {
+            img: "Dune2.jpg",
+            summary: "The epic continuation of Paul Atreides’ journey as he leads a rebellion against the forces threatening Arrakis and its people.",
+            url: "https://kisskh.do/Drama/Dune--Part-Two?id=8757&q=true"
+        },
+        "The Batman": {
+            img: "Batman2022.jpg",
+            summary: "Gotham’s vigilante uncovers corruption while facing the Riddler, a serial killer who targets Gotham’s elite.",
+            url: "https://kisskh.do/Drama/The-Batman?id=6655&q=true"
+        },
+        "Interstellar": {
+            img: "Interstellar.jpg",
+            summary: "A team of explorers travel through a wormhole in space to ensure humanity’s survival while confronting the limits of love and time.",
+            url: "https://kisskh.do/Drama/Interstellar?id=4226&q=true"
+        },
+        "Inception": {
+            img: "Inception.jpg",
+            summary: "A skilled thief enters the dreams of others to steal secrets, facing the ultimate challenge of planting an idea into someone’s subconscious.",
+            url: "https://ww7.123moviesfree.net/movie/inception-2756/"
+        }
     };
+
+    // Fill page content
+    if (mediaData[title]) {
+        const data = mediaData[title];
+        document.getElementById("title").textContent = title;
+        document.getElementById("poster").src = data.img;
+        document.getElementById("summary").textContent = data.summary;
+
+        document.getElementById("watchBtn").onclick = () => {
+            window.open(data.url, "_blank");
+        };
+    } else {
+        // Default if title not found
+        document.getElementById("title").textContent = "Title Not Found";
+        document.getElementById("poster").src = "default.jpg"; // add a placeholder image
+        document.getElementById("summary").textContent = "Sorry, no information is available for this title.";
+        document.getElementById("watchBtn").style.display = "none";
+    }
 </script>
 
 
