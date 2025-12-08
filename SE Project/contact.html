@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us – Filmagnet</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, rgba(0,0,0,1) 50%, #E50914 100%);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(3px);
+        }
+
+        .navbar-brand {
+            font-family: 'Antonio', sans-serif;
+            letter-spacing: 1px;
+            color: #fff !important;
+        }
+        
+        /* Make navbar toggler background transparent */
+        .navbar-toggler {
+            background-color: transparent !important;
+            border: 1px solid #E50914 !important;  /* red border */
+            padding: 6px 10px;
+        }
+
+        /* Make the three lines red */
+        .navbar-toggler-icon {
+            background-image: none !important;
+            width: 24px;
+            height: 2px;
+            background-color: #E50914; /* red lines */
+            position: relative;
+        }
+
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: "";
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background-color: #E50914; /* red lines */
+            left: 0;
+        }
+
+        .navbar-toggler-icon::before {
+            top: -7px;
+        }
+
+        .navbar-toggler-icon::after {
+            top: 7px;
+        }
+
+        .nav-link {
+            position: relative;
+            color: #fff !important;
+            transition: color 0.3s ease;
+            padding-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            background-color: #E50914;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #E50914 !important;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn-signin {
+            border: 1px solid #E50914;
+            color: #E50914;
+        }
+
+        .btn-signin:hover {
+            background: #E50914;
+            color: #000;
+        }
+
+        /* Contact box */
+        .contact-box {
+            max-width: 650px;
+            background: rgba(0,0,0,0.65);
+            padding: 35px;
+            border-radius: 12px;
+            margin: 70px auto;
+            box-shadow: 0 0 25px rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
+        }
+
+        h1 {
+            font-family: 'Antonio', sans-serif;
+            color: #E50914;
+            letter-spacing: 2px;
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            background: rgba(255,255,255,0.12);
+            border: none;
+            color: #fff;
+            padding: 12px;
+        }
+
+        .form-control:focus {
+            background: rgba(255,255,255,0.22);
+            color: #fff;
+            box-shadow: 0 0 0 2px #E50914;
+        }
+
+        .error-text {
+            color: #ffb3b3;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: #E50914;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #fff;
+            color: #E50914;
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg px-4 py-3">
+    <a class="navbar-brand fs-4" href="index.html">Filmagnet</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link mx-2" href="index.html#top">Home</a></li>
+            <li class="nav-item"><a class="nav-link mx-2" href="index.html#movies-section">Movies</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Contact Form -->
+<div class="container">
+    <div class="contact-box">
+        <h1>CONTACT US</h1>
+
+        <form id="contactForm" method="POST" novalidate>
+            <input type="hidden" name="_captcha" value="false">
+
+            <div class="mb-3">
+                <label class="form-label">Your Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email...">
+                <div id="emailError" class="error-text">Please enter a valid email address.</div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Your Message</label>
+                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message..."></textarea>
+                <div id="messageError" class="error-text">Message cannot be empty.</div>
+            </div>
+
+            <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+
+        <!-- SUCCESS MESSAGE BOX -->
+        <div id="successBox" style="
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.7);
+            border-left: 5px solid #4CAF50;
+            color: #fff;
+            font-size: 1.1rem;">
+            Your message has been sent successfully! We will get back to you soon.
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript Validation -->
+<script>
+    const form = document.getElementById("contactForm");
+    const emailField = document.getElementById("email");
+    const messageField = document.getElementById("message");
+    const emailError = document.getElementById("emailError");
+    const messageError = document.getElementById("messageError");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    form.addEventListener("submit", function(event) {
+        let valid = true;
+
+        // Email validation
+        if (!emailRegex.test(emailField.value.trim())) {
+            emailError.style.display = "block";
+            valid = false;
+        } else {
+            emailError.style.display = "none";
+        }
+
+        // Message validation
+        if (messageField.value.trim().length === 0) {
+            messageError.style.display = "block";
+            valid = false;
+        } else {
+            messageError.style.display = "none";
+        }
+
+        if (!valid) {
+            event.preventDefault();
+        }
+    });
+
+    form.addEventListener("submit", async function(event) {
+    event.preventDefault(); // stop normal submission
+
+    let valid = true;
+
+    // Email validation
+    if (!emailRegex.test(emailField.value.trim())) {
+        emailError.style.display = "block";
+        valid = false;
+    } else {
+        emailError.style.display = "none";
+    }
+
+    // Message validation
+    if (messageField.value.trim().length === 0) {
+        messageError.style.display = "block";
+        valid = false;
+    } else {
+        messageError.style.display = "none";
+    }
+
+    if (!valid) return;
+
+    // Build form data
+    const formData = new FormData(form);
+
+    // --- SEND TO FORMSUBMIT USING AJAX ---
+    await fetch("https://formsubmit.co/filmagnetofficial@gmail.com", {
+        method: "POST",
+        body: formData
+    });
+
+    // Hide the form + show success box
+    form.style.display = "none";
+    document.getElementById("successBox").style.display = "block";
+});
+</script>
+
+</body>
+</html>
