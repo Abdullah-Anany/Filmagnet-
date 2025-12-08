@@ -65,6 +65,40 @@
       letter-spacing: 1px;
     }
 
+    /* Make navbar toggler background transparent */
+    .navbar-toggler {
+        background-color: transparent !important;
+        border: 1px solid #E50914 !important;  /* red border */
+        padding: 6px 10px;
+    }
+
+    /* Make the three lines red */
+    .navbar-toggler-icon {
+        background-image: none !important;
+        width: 24px;
+        height: 2px;
+        background-color: #E50914; /* red lines */
+        position: relative;
+    }
+
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background-color: #E50914; /* red lines */
+        left: 0;
+    }
+
+    .navbar-toggler-icon::before {
+        top: -7px;
+    }
+
+    .navbar-toggler-icon::after {
+        top: 7px;
+    }
+
     .nav-link {
       position: relative;
       color: #fff !important;
@@ -133,7 +167,6 @@
           <li class="nav-item"><a class="nav-link mx-2" href="index.html#top">Home</a></li>
           <li class="nav-item"><a class="nav-link mx-2" href="index.html#movies-section">Movies</a></li>
       </ul>
-      <button class="btn btn-signin ms-3">Sign In</button>
   </div>
 </nav>
 
