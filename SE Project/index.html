@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filmagnet</title>
-
-    <!-- Bootstrap 5 -->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Icons -->
@@ -157,7 +156,172 @@
             color: #fff !important;
             border: none !important;
         }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* GENERAL TEXT SCALING */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.9rem !important;
+            }
+            h2, h3, h4 {
+                font-size: 1.4rem !important;
+            }
+        }
+
+        /* ---------------------------------------------------
+        NAVBAR RESPONSIVE BEHAVIOR
+        --------------------------------------------------- */
+        .navbar {
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .navbar-brand {
+            font-size: 1.6rem;
+        }
+
+        /* Make navbar toggler background transparent */
+        .navbar-toggler {
+            background-color: transparent !important;
+            border: 1px solid #E50914 !important;  /* red border */
+            padding: 6px 10px;
+        }
+
+        /* Make the three lines red */
+        .navbar-toggler-icon {
+            background-image: none !important;
+            width: 24px;
+            height: 2px;
+            background-color: #E50914; /* red lines */
+            position: relative;
+        }
+
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: "";
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background-color: #E50914; /* red lines */
+            left: 0;
+        }
+
+        .navbar-toggler-icon::before {
+            top: -7px;
+        }
+
+        .navbar-toggler-icon::after {
+            top: 7px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-link {
+                padding: 10px 0;
+                text-align: center;
+            }
+            .btn-signin {
+                width: 100%;
+                margin-top: 12px;
+            }
+        }
+
+        /* ---------------------------------------------------
+        HERO SECTION RESPONSIVE
+        --------------------------------------------------- */
+        .hero-section {
+            height: 70vh;
+        }
+
+        @media (max-width: 992px) {
+            .hero-section {
+                height: auto;
+                padding: 50px 0;
+            }
+            .hero-content {
+                position: relative;
+                transform: none;
+                top: 0;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 1.7rem !important;
+            }
+            .hero-content {
+                max-width: 100%;
+                padding-left: 0;
+                text-align: center;
+            }
+            .watch-btn {
+                width: 100%;
+                margin-top: 15px;
+            }
+            .hero-section .col-md-6.text-end {
+                text-align: center !important;
+                margin-top: 25px;
+            }
+        }
+
+        /* ---------------------------------------------------
+        MOVIE GRID RESPONSIVE
+        --------------------------------------------------- */
+        .movie-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .movie-card:hover {
+                transform: none;
+            }
+            .movie-card:hover img {
+                transform: none;
+                filter: brightness(100%);
+            }
+        }
+
+        /* Adjust rows */
+        @media (max-width: 576px) {
+            .col-6 {
+                padding: 4px;
+            }
+            .movie-card-title {
+                font-size: 0.9rem;
+                text-align: center;
+            }
+        }
+
+        /* ---------------------------------------------------
+        CATEGORY BUTTONS ON MOBILE
+        --------------------------------------------------- */
+        @media (max-width: 576px) {
+            .category-btn {
+                width: 100%;
+                margin-bottom: 10px;
+                padding: 10px;
+                font-size: 1rem;
+            }
+        }
+
+        /* ---------------------------------------------------
+        SPACING CLEANUP FOR SMALL DEVICES
+        --------------------------------------------------- */
+        @media (max-width: 576px) {
+            section.container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .section-title {
+                font-size: 1rem;
+            }
+        }
     </style>
+            
 </head>
 <body>
 
@@ -175,7 +339,7 @@
             <li class="nav-item"><a class="nav-link mx-2" href="#movies-section" id="navTV">TV Shows</a></li>
             <li class="nav-item"><a class="nav-link mx-2" href="#movies-section" id="navAnimations">Animations</a></li>
         </ul>
-        <button class="btn btn-signin ms-3">Sign In</button>
+        <a href="contact.html" class="btn btn-signin ms-3">CONTACT US</a>
     </div>
 </nav>
 
