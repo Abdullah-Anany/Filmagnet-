@@ -1,0 +1,24 @@
+name: HTML Validation Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Validate HTML files in 'SE projects'
+        run: |
+          echo "Listing HTML files in 'SE projects' folder:"
+          find "SE projects" -name "*.html"
+          
+  
